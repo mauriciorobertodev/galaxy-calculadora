@@ -1,0 +1,36 @@
+{
+    "name": "galaxy-calculadora",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc && vite build",
+        "preview": "vite preview",
+        "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts",
+        "lint:fix": "eslint --ignore-path .eslintignore --ext .js,.ts --fix",
+        "style:check": "prettier --check 'src/**/*.ts', 'src/**/*.vue'",
+        "style:fix": "prettier --write 'src/**/*.ts', 'src/**/*.vue'",
+        "deploy:github": "gh-pages -d dist"
+    },
+    "dependencies": {
+        "vue": "^3.3.4"
+    },
+    "devDependencies": {
+        "@types/node": "^20.6.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.0",
+        "@typescript-eslint/parser": "^6.7.0",
+        "@vitejs/plugin-vue": "^4.2.3",
+        "@vue/eslint-config-prettier": "^8.0.0",
+        "autoprefixer": "^10.4.15",
+        "eslint": "^8.49.0",
+        "gh-pages": "^6.0.0",
+        "path": "^0.12.7",
+        "postcss": "^8.4.29",
+        "prettier": "^3.0.3",
+        "tailwindcss": "^3.3.3",
+        "typescript": "^5.0.2",
+        "vite": "^4.4.5",
+        "vue-tsc": "^1.8.5"
+    }
+}

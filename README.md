@@ -31,6 +31,12 @@
 
 ![Alt text](https://raw.githubusercontent.com/mauriciorobertodev/galaxy-calculadora/main/screenshot.png)
 
+<h4>
+    <a href="https://mauriciorobertodev.github.io/galaxy-calculadora/">Demonstração</a>
+    <span> · </span>
+    <a href="https://github.com/MauricioRobertoDev/galaxy-calculadora/issues/">Reporte Bugs</a>
+</h4>
+
 </div>
 
 <br />

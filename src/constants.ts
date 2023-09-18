@@ -245,27 +245,27 @@ export const CANNON_RESULTS: CannonGoal[] = [
 
 export const GALAY_ITEMS: { [key in GalaxyItemID]: GalaxyItem } = {
     FireBall: {
-        name: "baata",
-        img: "batata",
+        name: "bala de fogo",
+        img: "https://galaxy.mobstudio.ru/services/public/img/prizes/cb_fball_1_200.png",
     },
     BlackBall: {
-        name: "baata",
-        img: "batata",
+        name: "bala preta",
+        img: "https://galaxy.mobstudio.ru/services/public/img/prizes/cb_ball_200.png",
     },
     GoldBall: {
-        name: "baata",
-        img: "batata",
+        name: "bala de ouro",
+        img: "https://galaxy.mobstudio.ru/services/public/img/prizes/cb_gball_200.png",
     },
     ExplosiveBall: {
-        name: "baata",
-        img: "batata",
+        name: "bala explosiva",
+        img: "https://galaxy.mobstudio.ru/services/public/img/prizes/cb_xball_1_200.png",
     },
     EletricBall: {
-        name: "baata",
-        img: "batata",
+        name: "bola elétrica",
+        img: "https://galaxy.mobstudio.ru/services/public/img/prizes/b_eball_1_200.png",
     },
     DiamondKey: {
-        name: "baata",
-        img: "batata",
+        name: "chave de diamante",
+        img: "https://galaxy.mobstudio.ru/services/public/img/prizes/diamond_lockpick_200.png",
     },
 };

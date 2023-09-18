@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
-// import { Inventory } from "@/types";
+import InventoryItem from "./InventoryItem.vue";
+import global from "@/global";
 
 const open = ref<boolean>(false);
-// const props = defineProps<{ inventory: Inventory }>();
-// const { inventory } = toRefs(props);
 </script>
 
 <template>
@@ -32,7 +30,9 @@ const open = ref<boolean>(false);
                 </button>
 
                 <h2 class="text-2xl md:text-3xl font-bold">Inventário</h2>
-                <div class="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
+                <div class="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <InventoryItem v-for="(item, index) in global.getInventory()" v-bind:key="index" v-bind:item="item" />
+                </div>
                 <h2 class="text-2xl md:text-3xl font-bold">Trocas</h2>
             </div>
         </div>

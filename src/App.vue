@@ -2,6 +2,7 @@
 import SelectAuthority from "@/components/SelectAuthority.vue";
 import AuthorityShowcase from "@/components/AuthorityShowcase.vue";
 import CannonResults from "@/components/CannonResults.vue";
+import Settings from "@/components/Settings.vue";
 </script>
 
 <template>
@@ -17,7 +18,7 @@ import CannonResults from "@/components/CannonResults.vue";
             <CannonResults />
 
             <!-- settings -->
-            <!-- <Settings v-model:inventory="inventory" /> -->
+            <Settings />
         </div>
     </div>
 </template>

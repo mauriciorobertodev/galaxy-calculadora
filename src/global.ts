@@ -8,16 +8,16 @@ export class GlobalState {
         current_authority: { ...AUTHORITIES[0] },
         needed_authority: 0,
         inventory: {
-            FireBall: {
-                id: "FireBall",
-                quantity: 0,
-            },
             BlackBall: {
                 id: "BlackBall",
                 quantity: 0,
             },
             GoldBall: {
                 id: "GoldBall",
+                quantity: 0,
+            },
+            FireBall: {
+                id: "FireBall",
                 quantity: 0,
             },
             ExplosiveBall: {
@@ -59,6 +59,10 @@ export class GlobalState {
 
     getInventory(): Inventory {
         return this.state.inventory;
+    }
+
+    getInventoryItem(id: InventoryItemID): InventoryItem {
+        return this.state.inventory[id];
     }
 
     setCurrentAuthority(authority: Authority): void {

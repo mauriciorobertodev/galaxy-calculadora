@@ -8,6 +8,7 @@ export function getAuthotiryByID(id: AuthorityID): Authority {
 export function getAuthotiryByPoints(points: number): Authority {
     const lastAuthority = AUTHORITIES[AUTHORITIES.length - 1];
     if (points >= lastAuthority.points) return lastAuthority;
+    if (points <= AUTHORITIES[0].points) return AUTHORITIES[0];
 
     return AUTHORITIES.find((a, index) => a.points <= points && AUTHORITIES[index + 1].points > points) as Authority;
 }

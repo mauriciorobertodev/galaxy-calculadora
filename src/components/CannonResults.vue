@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { toRefs } from "vue";
 import { CANNON_RESULTS } from "@/constants";
-
-const props = defineProps<{ points: number; placeholder_zero?: string }>();
-const { points } = toRefs(props);
+import global from "@/global";
 </script>
 
 <template>
+    <h1 class="text-2xl md:text-3xl font-bold">Canhão</h1>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div class="border rounded-lg border-white/30 divide-y divide-white/30" v-for="(goal, index) in CANNON_RESULTS" v-bind:key="index">
             <div class="flex gap-4 items-center p-4 justify-start">
@@ -16,7 +14,7 @@ const { points } = toRefs(props);
                     <span v-if="goal.imgs.quantity > 1" class="absolute bottom-2 right-2 font-bold text-xl">{{ goal.imgs.quantity }}x</span>
                 </div>
                 <div>
-                    <div class="text-2xl font-bold">{{ Math.ceil(points / goal.value).toLocaleString("pt-BR") }}</div>
+                    <div class="text-2xl font-bold">{{ Math.ceil(global.getNeededPoints() / goal.value).toLocaleString("pt-BR") }}</div>
                     <div class="text-white/70">Acertos.</div>
                 </div>
             </div>

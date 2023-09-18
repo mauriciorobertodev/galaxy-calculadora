@@ -1,4 +1,4 @@
-export type AuthorityID = "Dad" | "Angel" | "God" | "Almighty" | "Mister" | "Legend" | "Premier" | "Guardian" | "Emperor" | "Sovereign" | "Protector" | "Immortal" | "Glorious";
+export type AuthorityID = "None" | "Dad" | "Angel" | "God" | "Almighty" | "Mister" | "Legend" | "Premier" | "Guardian" | "Emperor" | "Sovereign" | "Protector" | "Immortal" | "Glorious";
 
 export type Authority = {
     id: AuthorityID;
@@ -27,4 +27,27 @@ export type CannonGoal = {
     };
     value: number;
     description: string;
+};
+
+export type Inventory = { [key in InventoryItemID]: InventoryItem };
+
+export type GalaxyItemID = "FireBall" | "BlackBall" | "GoldBall" | "ExplosiveBall" | "EletricBall" | "DiamondKey";
+
+export type GalaxyItem = {
+    name: string;
+    img: string;
+};
+
+export type InventoryItemID = Extract<GalaxyItemID, "FireBall" | "BlackBall" | "GoldBall" | "ExplosiveBall" | "EletricBall" | "DiamondKey">;
+
+export type InventoryItem = {
+    id: InventoryItemID;
+    quantity: number;
+};
+
+export type State = {
+    desired_authority: Authority;
+    current_authority: Authority;
+    needed_authority: number;
+    inventory: Inventory;
 };

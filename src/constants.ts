@@ -1,6 +1,12 @@
-import { Authority, CannonGoal, Star } from "./types";
+import { Authority, CannonGoal, GalaxyItem, GalaxyItemID, Star } from "./types";
 
 export const AUTHORITIES: Authority[] = [
+    {
+        id: "None",
+        name: "-",
+        points: 0,
+        aura: "",
+    },
     {
         id: "Dad",
         name: "pai",
@@ -236,3 +242,30 @@ export const CANNON_RESULTS: CannonGoal[] = [
         },
     },
 ];
+
+export const GALAY_ITEMS: { [key in GalaxyItemID]: GalaxyItem } = {
+    FireBall: {
+        name: "baata",
+        img: "batata",
+    },
+    BlackBall: {
+        name: "baata",
+        img: "batata",
+    },
+    GoldBall: {
+        name: "baata",
+        img: "batata",
+    },
+    ExplosiveBall: {
+        name: "baata",
+        img: "batata",
+    },
+    EletricBall: {
+        name: "baata",
+        img: "batata",
+    },
+    DiamondKey: {
+        name: "baata",
+        img: "batata",
+    },
+};

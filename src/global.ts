@@ -1,6 +1,6 @@
 import { reactive, watch } from "vue";
-import { Authority, Inventory, InventoryItemID, State } from "./types";
-import { AUTHORITIES } from "./constants";
+import { Authority, Inventory, InventoryItemID, State, InventoryItem, Trades, TradeItemID } from "./types";
+import { AUTHORITIES } from "@/constants";
 
 export class GlobalState {
     private state: State = reactive({
@@ -33,6 +33,29 @@ export class GlobalState {
                 quantity: 0,
             },
         },
+        trades: {
+            "1DiamondKey": {
+                id: "1DiamondKey",
+                item_id: "DiamondKey",
+                item_quantity: 1,
+                trade_item_id: "FireBall",
+                trade_quantity: 9,
+            },
+            "10DiamondKey": {
+                id: "10DiamondKey",
+                item_id: "DiamondKey",
+                item_quantity: 10,
+                trade_item_id: "FireBall",
+                trade_quantity: 100,
+            },
+            "100DiamondKey": {
+                id: "100DiamondKey",
+                item_id: "DiamondKey",
+                item_quantity: 100,
+                trade_item_id: "FireBall",
+                trade_quantity: 1100,
+            },
+        },
     });
 
     constructor() {
@@ -61,6 +84,10 @@ export class GlobalState {
         return this.state.inventory;
     }
 
+    getTrades(): Trades {
+        return this.state.trades;
+    }
+
     getInventoryItem(id: InventoryItemID): InventoryItem {
         return this.state.inventory[id];
     }
@@ -77,6 +104,10 @@ export class GlobalState {
         this.state.inventory[id].quantity = quantity;
     }
 
+    setTradeItemQuantity(id: TradeItemID, quantity: number): void {
+        this.state.trades[id].trade_quantity = quantity;
+    }
+
     saveInLocalStorage() {
         const data = JSON.stringify(this.state);
         localStorage.removeItem("galaxy-calculadora");
@@ -88,6 +119,7 @@ export class GlobalState {
         if (!json) return;
         const data = JSON.parse(json) as State;
         this.state.inventory = data.inventory;
+        this.state.trades = data.trades;
     }
 }
 

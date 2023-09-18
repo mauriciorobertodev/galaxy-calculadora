@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import InventoryItem from "./InventoryItem.vue";
 import global from "@/global";
+import TradeItem from "./TradeItem.vue";
 
 const open = ref<boolean>(false);
 </script>
@@ -21,7 +22,7 @@ const open = ref<boolean>(false);
         </button>
 
         <!-- modal -->
-        <div v-if="open" class="bg-slate-900 fixed top-0 left-0 h-screen w-screen">
+        <div v-if="open" class="bg-slate-900 fixed top-0 left-0 h-screen w-screen overflow-y-scroll">
             <div class="container mx-auto space-y-6 relative px-4">
                 <button v-on:click="open = false" class="absolute top-0 right-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -34,6 +35,9 @@ const open = ref<boolean>(false);
                     <InventoryItem v-for="(item, index) in global.getInventory()" v-bind:key="index" v-bind:item="item" />
                 </div>
                 <h2 class="text-2xl md:text-3xl font-bold">Trocas</h2>
+                <div class="w-full h-min grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <TradeItem v-for="(item, index) in global.getTrades()" v-bind:key="index" v-bind:item="item" />
+                </div>
             </div>
         </div>
     </div>

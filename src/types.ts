@@ -50,4 +50,17 @@ export type State = {
     current_authority: Authority;
     needed_authority: number;
     inventory: Inventory;
+    trades: Trades;
 };
+
+export type TradeItemID = "1DiamondKey" | "10DiamondKey" | "100DiamondKey";
+
+export type TradeItem = {
+    id: TradeItemID;
+    item_id: GalaxyItemID;
+    item_quantity: number;
+    trade_item_id: GalaxyItemID;
+    trade_quantity: number;
+};
+
+export type Trades = { [key in TradeItemID]: TradeItem };

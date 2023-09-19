@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { ref, toRefs } from "vue";
 import { vMaska } from "maska";
 
@@ -24,7 +24,7 @@ function handleQuantity(e: Event) {
 <template>
     <div class="border rounded-md border-white/10 grid grid-rows-[min-content_min-content]">
         <div class="w-full flex items-center justify-center py-4 relative">
-            <img v-bind:src="galaItem.img" class="w-20" />
+            <img v-bind:src="galaItem.img" class="w-14" />
             <div class="absolute left-1/2 bottom-4 bg-white text-slate-700 p-1 rounded-full font-bold text-sm px-2">x{{ item.quantity }}</div>
         </div>
         <div class="flex items-center justify-center h-12 border-t border-white/10 font-semibold">{{ galaItem.name.charAt(0).toUpperCase() + galaItem.name.slice(1) }}</div>
@@ -49,4 +49,4 @@ function handleQuantity(e: Event) {
             </button>
         </div>
     </div>
-</template>
+</template> -->

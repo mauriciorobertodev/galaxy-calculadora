@@ -1,59 +1,69 @@
 import { reactive, watch } from "vue";
-import { Authority, Inventory, InventoryItemID, State, InventoryItem, Trades, TradeItemID } from "./types";
-import { AUTHORITIES } from "@/constants";
+import { Authority, Inventory, InventoryItemID, State, InventoryItem, Trades, TradeItemID, Goals } from "./types";
+import { AUTHORITIES } from "./constants";
 
 export class GlobalState {
     private state: State = reactive({
-        desired_authority: { ...AUTHORITIES[0] },
-        current_authority: { ...AUTHORITIES[0] },
+        desired_authority: AUTHORITIES.none,
+        current_authority: AUTHORITIES.none,
         needed_authority: 0,
         inventory: {
-            BlackBall: {
-                id: "BlackBall",
+            "fire-ball": {
+                gala_item_id: "FireBall",
                 quantity: 0,
             },
-            GoldBall: {
-                id: "GoldBall",
+            "gold-ball": {
+                gala_item_id: "GoldBall",
                 quantity: 0,
             },
-            FireBall: {
-                id: "FireBall",
+            "explosive-ball": {
+                gala_item_id: "ExplosiveBall",
                 quantity: 0,
             },
-            ExplosiveBall: {
-                id: "ExplosiveBall",
+            "eletric-ball": {
+                gala_item_id: "EletricBall",
                 quantity: 0,
             },
-            EletricBall: {
-                id: "EletricBall",
-                quantity: 0,
-            },
-            DiamondKey: {
-                id: "DiamondKey",
+            "diamond-key": {
+                gala_item_id: "DiamondKey",
                 quantity: 0,
             },
         },
         trades: {
-            "1DiamondKey": {
+            "1-diamond-key": {
                 id: "1DiamondKey",
                 item_id: "DiamondKey",
                 item_quantity: 1,
                 trade_item_id: "FireBall",
                 trade_quantity: 9,
             },
-            "10DiamondKey": {
+            "10-diamond-key": {
                 id: "10DiamondKey",
                 item_id: "DiamondKey",
                 item_quantity: 10,
                 trade_item_id: "FireBall",
                 trade_quantity: 100,
             },
-            "100DiamondKey": {
+            "100-diamond-key": {
                 id: "100DiamondKey",
                 item_id: "DiamondKey",
                 item_quantity: 100,
                 trade_item_id: "FireBall",
                 trade_quantity: 1100,
+            },
+        },
+        goals: {
+            "gold-ball": {
+                option: "gold-star",
+                fire_item_id: "GoldBall",
+            },
+            "fire-ball": {
+                option: "silver-star",
+                fire_item_id: "FireBall",
+            },
+            "explosive-ball": {
+                option: "7-barrels",
+                fire_item_id: "ExplosiveBall",
             },
         },
     });
@@ -88,6 +98,10 @@ export class GlobalState {
         return this.state.trades;
     }
 
+    getGoals(): Goals {
+        return this.state.goals;
+    }
+
     getInventoryItem(id: InventoryItemID): InventoryItem {
         return this.state.inventory[id];
     }
@@ -118,13 +132,15 @@ export class GlobalState {
         const json = localStorage.getItem("galaxy-calculadora");
         if (!json) return;
         const data = JSON.parse(json) as State;
+
         this.state.inventory = data.inventory;
         this.state.trades = data.trades;
+        this.state.goals = data.goals;
+        this.state.current_authority = data.current_authority;
+        this.state.desired_authority = data.desired_authority;
     }
 }
 
 const global: GlobalState = new GlobalState();
 
 export default global;
-
-global.loadFromLocalStorage();

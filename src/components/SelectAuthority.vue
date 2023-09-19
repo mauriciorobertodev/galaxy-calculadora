@@ -1,26 +1,25 @@
 <script setup lang="ts">
 import { vMaska } from "maska";
 import { AUTHORITIES } from "@/constants";
-import { getAuthotiryByPoints } from "@/helpers";
+import { getAuthotiryByPoints, getAuthorityById } from "@/helpers";
 import global from "@/global";
-import { Authority } from "@/types";
-import { ref } from "vue";
+import { AuthorityID } from "@/types";
 
-const desired_authority = ref<string>(JSON.stringify(global.getDesiredAuthority()));
-const current_authority = ref<string>(JSON.stringify(global.getCurrentAuthority()));
+// const current_authority = ref<string>(global.getCurrentAuthority().points.toString());
+// const desired_authority = ref<string>(global.getDesiredAuthority().id.toString());
 
 function handleCurrentAuthorityPoints(e: Event) {
     const target = e.target as HTMLInputElement;
     const points = parseInt(target.value) || 0;
     const authority = getAuthotiryByPoints(points);
 
-    current_authority.value = points.toString();
+    // current_authority.value = points.toString();
     global.setCurrentAuthority({ ...authority, points });
 }
 
 function handleDesiredAuthority(e: Event) {
     const target = e.target as HTMLSelectElement;
-    global.setDesiredAuthority({ ...(JSON.parse(target.value) as Authority) });
+    global.setDesiredAuthority({ ...getAuthorityById(target.value as AuthorityID | "none") });
 }
 </script>
 
@@ -36,7 +35,7 @@ function handleDesiredAuthority(e: Event) {
                     data-maska="###############"
                     type="text"
                     placeholder="ex. 1432"
-                    v-bind:value="current_authority"
+                    v-bind:value="global.getCurrentAuthority().points.toString()"
                     v-on:input="handleCurrentAuthorityPoints"
                     class="h-10 px-4 w-full grow rounded-lg placeholder-white/20 border border-white/10 text-white bg-transparent focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 />
@@ -47,14 +46,14 @@ function handleDesiredAuthority(e: Event) {
                 <select
                     id="desired_authority"
                     placeholder="ex. 1432"
-                    v-bind:value="desired_authority"
+                    v-bind:value="global.getDesiredAuthority().id.toString()"
                     v-on:input="handleDesiredAuthority"
                     class="h-10 px-4 w-full grow rounded-lg placeholder-white/20 border border-white/10 text-white bg-transparent focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 >
-                    <option v-bind:value="JSON.stringify(AUTHORITIES[0])" selected disabled hidden>Selecione</option>
-                    <template v-for="(auth, index) in AUTHORITIES">
-                        <option v-if="auth.points > 0" v-bind:key="index" v-bind:value="JSON.stringify(auth)" class="bg-slate-900 text-white hover:!bg-blue-500">
-                            {{ auth.name.charAt(0).toUpperCase() + auth.name.slice(1) }}
+                    <option value="none" selected disabled hidden>Selecione</option>
+                    <template v-bind:key="index" v-for="(authority, index) in AUTHORITIES">
+                        <option v-if="authority.id != 'none'" v-bind:key="index" v-bind:value="authority.id" class="bg-slate-900 text-white hover:!bg-blue-500">
+                            {{ authority.name.charAt(0).toUpperCase() + authority.name.slice(1) }}
                         </option>
                     </template>
                 </select>

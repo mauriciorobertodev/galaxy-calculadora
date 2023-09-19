@@ -10,12 +10,12 @@ import global from "@/global";
             <div class="py-4 rounded-lg border border-dashed border-white/40 w-full flex flex-col items-center justify-center">
                 <p class="text-center font-medium text-white/50 pt-2">Atual</p>
                 <Avatar v-bind:authority="global.getCurrentAuthority()" class="mx-auto" />
-                <p class="text-center font-medium text-white/50 pt-2">{{ global.getCurrentAuthority().name.charAt(0).toUpperCase() + global.getCurrentAuthority().name.slice(1) }}</p>
+                <p class="text-center font-medium text-white/50 pt-2">{{ global.getCurrentAuthority().name ? global.getCurrentAuthority().name.charAt(0).toUpperCase() + global.getCurrentAuthority().name.slice(1) : "-" }}</p>
             </div>
             <div class="py-4 rounded-lg border border-dashed border-white/40 w-full">
                 <p class="text-center font-medium text-white/50 pt-2">Desejado</p>
                 <Avatar v-bind:authority="global.getDesiredAuthority()" class="mx-auto" />
-                <p class="text-center font-medium text-white/50 pt-2">{{ global.getDesiredAuthority().name.charAt(0).toUpperCase() + global.getDesiredAuthority().name.slice(1) }}</p>
+                <p class="text-center font-medium text-white/50 pt-2">{{ global.getDesiredAuthority().name ? global.getDesiredAuthority().name.charAt(0).toUpperCase() + global.getDesiredAuthority().name.slice(1) : "-" }}</p>
             </div>
         </div>
 

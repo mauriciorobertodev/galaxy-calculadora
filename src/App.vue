@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import SelectAuthority from "@/components/SelectAuthority.vue";
 import AuthorityShowcase from "@/components/AuthorityShowcase.vue";
-import CannonResults from "@/components/CannonResults.vue";
-import Settings from "@/components/Settings.vue";
+import { onMounted } from "vue";
+import global from "@/global";
+// import CannonResults from "@/components/CannonResults.vue";
+// import Settings from "@/components/Settings.vue";
+onMounted(() => global.loadFromLocalStorage());
 </script>
 
 <template>
@@ -15,10 +18,10 @@ import Settings from "@/components/Settings.vue";
             <AuthorityShowcase class="h-min md:h-auto" />
 
             <!-- cannon -->
-            <CannonResults />
+            <!-- <CannonResults /> -->
 
             <!-- settings -->
-            <Settings />
+            <!-- <Settings /> -->
         </div>
     </div>
 </template>

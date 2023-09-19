@@ -3,6 +3,7 @@ import { ref } from "vue";
 import InventoryItem from "./InventoryItem.vue";
 import global from "@/global";
 import TradeItem from "./TradeItem.vue";
+import GoalItem from "./GoalItem.vue";
 
 const open = ref<boolean>(false);
 </script>
@@ -22,21 +23,30 @@ const open = ref<boolean>(false);
         </button>
 
         <!-- modal -->
-        <div v-if="open" class="bg-slate-900 fixed top-0 left-0 h-screen w-screen overflow-y-scroll">
-            <div class="container mx-auto space-y-6 relative px-4">
+        <div v-if="open" class="bg-slate-900 fixed top-0 left-0 h-screen w-screen overflow-y-scroll py-6">
+            <div class="container mx-auto relative px-4">
                 <button v-on:click="open = false" class="absolute top-0 right-4">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
 
-                <h2 class="text-2xl md:text-3xl font-bold">Inventário</h2>
+                <!-- inventory -->
+                <h2 class="text-2xl md:text-3xl font-bold pb-6">Inventário</h2>
                 <div class="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     <InventoryItem v-for="(item, index) in global.getInventory()" v-bind:key="index" v-bind:item="item" />
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold">Trocas</h2>
-                <div class="w-full h-min grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+
+                <!-- trades -->
+                <h2 class="text-2xl md:text-3xl font-bold py-6">Trocas</h2>
+                <div class="w-full h-min grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     <TradeItem v-for="(item, index) in global.getTrades()" v-bind:key="index" v-bind:item="item" />
+                </div>
+
+                <!-- goals -->
+                <h2 class="text-2xl md:text-3xl font-bold py-6">Objetivos</h2>
+                <div class="w-full h-min grid grid-rows-3 gap-4">
+                    <GoalItem v-for="(item, index) in global.getGoals()" v-bind:key="index" v-bind:item="item" />
                 </div>
             </div>
         </div>

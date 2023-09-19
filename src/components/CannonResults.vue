@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { CANNON_RESULTS } from "@/constants";
 import global from "@/global";
 </script>
@@ -21,4 +21,4 @@ import global from "@/global";
             <div class="p-4 text-sm text-gray-400 border-t">{{ goal.description }}</div>
         </div>
     </div>
-</template>
+</template> -->

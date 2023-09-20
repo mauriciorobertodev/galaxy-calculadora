@@ -5,8 +5,8 @@ import global from "@/global";
 
 <template>
     <h1 class="text-2xl md:text-3xl font-bold">Canhão</h1>
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <div v-bind:key="i" v-for="(cannon_goal_options, i) in CANNON_GOALS" class="grid grid-rows-3 gap-4">
+    <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div v-bind:key="i" v-for="(cannon_goal_options, i) in CANNON_GOALS" class="grid sm:grid-cols-1 md:grid-rows-3 gap-4">
             <div class="border rounded-lg border-white/30 divide-y divide-white/30" v-for="option in cannon_goal_options" v-bind:key="option.id">
                 <div class="flex gap-4 items-center p-4 justify-start">
                     <div class="h-20 w-20 relative">

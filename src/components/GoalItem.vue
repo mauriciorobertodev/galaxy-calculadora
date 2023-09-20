@@ -1,15 +1,15 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 import { toRefs } from "vue";
 
 import { GoalItem } from "@/types";
-import { GALAY_ITEMS, GOAL_OPTIONS } from "@/constants";
+import { CANNON_GOALS, GALAY_ITEMS } from "@/constants";
 import global from "@/global";
 // import global from "@/global";
 
 const props = defineProps<{ item: GoalItem }>();
 const { item } = toRefs(props);
 
-const galaItem = GALAY_ITEMS[item.value.item_id];
+const galaItem = GALAY_ITEMS[item.value.fire_item_id];
 </script>
 
 <template>
@@ -21,16 +21,16 @@ const galaItem = GALAY_ITEMS[item.value.item_id];
 
         <div class="flex gap-4">
             <button
-                v-on:click="global.setGoalChoice(item.id, goal.id)"
-                v-for="(goal, index) in GOAL_OPTIONS[item.id]"
+                v-for="(option, index) in CANNON_GOALS[item.id]"
+                v-on:click="global.setGoalChoice(item.id, option.id)"
                 v-bind:key="index"
-                v-bind:class="goal.id === global.getGoal(item.id).option ? 'bg-primary-500' : ''"
+                v-bind:class="option.id === global.getGoal(item.id).option ? 'bg-primary-500' : ''"
                 class="h-20 w-20 border rounded-lg border-white/10 relative flex items-center justify-center hover:border-primary-500"
             >
-                <img v-bind:src="GALAY_ITEMS[goal.goal_ids[0]].img" class="h-14 w-14" />
-                <img v-if="goal.goal_ids[1]" v-bind:src="GALAY_ITEMS[goal.goal_ids[1]].img" class="absolute right-2 bottom-2 w-10 h-10" />
-                <span v-if="goal.goal_quantity > 1" class="font-bold absolute text-2xl">x{{ goal.goal_quantity }}</span>
+                <img v-bind:src="GALAY_ITEMS[option.goal_item_ids[0]].img" class="h-14 w-14" />
+                <img v-if="option.goal_item_ids[1]" v-bind:src="GALAY_ITEMS[option.goal_item_ids[1]].img" class="absolute right-2 bottom-2 w-10 h-10" />
+                <span v-if="option.quantity > 1" class="font-bold absolute text-2xl">x{{ option.quantity }}</span>
             </button>
         </div>
     </div>
-</template> -->
+</template>

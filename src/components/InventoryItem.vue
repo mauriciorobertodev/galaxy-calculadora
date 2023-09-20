@@ -1,4 +1,4 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 import { ref, toRefs } from "vue";
 import { vMaska } from "maska";
 
@@ -9,7 +9,7 @@ import global from "@/global";
 const props = defineProps<{ item: InventoryItem }>();
 const { item } = toRefs(props);
 
-const galaItem = GALAY_ITEMS[item.value.id];
+const galaItem = GALAY_ITEMS[item.value.gala_item_id];
 const quantity = ref<number>(item.value.quantity);
 
 function handleQuantity(e: Event) {
@@ -49,4 +49,4 @@ function handleQuantity(e: Event) {
             </button>
         </div>
     </div>
-</template> -->
+</template>

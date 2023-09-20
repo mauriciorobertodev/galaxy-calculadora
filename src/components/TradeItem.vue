@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { ref, toRefs } from "vue";
 import { vMaska } from "maska";
-
 import { TradeItem } from "@/types";
 import { GALAY_ITEMS } from "@/constants";
 import global from "@/global";
-// import global from "@/global";
 
 const props = defineProps<{ item: TradeItem }>();
 const { item } = toRefs(props);
 
 const galaItem = GALAY_ITEMS[item.value.item_id];
-const tradeItem = GALAY_ITEMS[item.value.trade_item_id];
-const quantity = ref<number>(item.value.trade_quantity);
+const galaTradeItem = GALAY_ITEMS[item.value.trade_item_id];
+const quantity = ref<number>(item.value.trade_quantity ?? 0);
 
 function handleQuantity(e: Event) {
     const target = e.target as HTMLInputElement;
@@ -35,7 +33,7 @@ function handleQuantity(e: Event) {
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
                 </svg>
                 <div class="flex items-center justify-center relative p-2">
-                    <img v-bind:src="tradeItem.img" class="w-14" />
+                    <img v-bind:src="galaTradeItem.img" class="w-14" />
                     <div class="absolute bottom-0 bg-white text-slate-700 p-1 rounded-full font-bold text-sm px-2">x{{ item.trade_quantity.toLocaleString("pt-BR") }}</div>
                 </div>
             </div>

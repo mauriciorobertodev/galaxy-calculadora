@@ -5,7 +5,7 @@ import global from "@/global";
 </script>
 
 <template>
-    <div class="space-y-4">
+    <div class="space-y-4 h-min md:h-auto">
         <div class="grid grid-cols-2 gap-4">
             <div class="py-4 rounded-lg border border-dashed border-white/40 w-full flex flex-col items-center justify-center">
                 <p class="text-center font-medium text-white/50 pt-2">Atual</p>

@@ -65,6 +65,7 @@ export type CannonGoalOption = {
 export type InventoryItemID = "fire-ball" | "gold-ball" | "explosive-ball" | "eletric-ball" | "diamond-key";
 
 export type InventoryItem = {
+    id: InventoryItemID;
     gala_item_id: GalaxyItemID;
     quantity: number;
 };
@@ -75,6 +76,7 @@ export type Inventory = { [key in InventoryItemID]: InventoryItem };
 export type TradeItemID = "1-diamond-key" | "10-diamond-key" | "100-diamond-key";
 
 export type TradeItem = {
+    id: TradeItemID;
     item_id: GalaxyItemID;
     item_quantity: number;
     trade_item_id: GalaxyItemID;
@@ -84,7 +86,12 @@ export type TradeItem = {
 export type Trades = { [key in TradeItemID]: TradeItem };
 
 // goals
-export type Goals = { [key in CannonFireID]: { fire_item_id: GalaxyItemID; option: CannonGoalID } };
+export type GoalItem = {
+    id: CannonFireID;
+    fire_item_id: GalaxyItemID;
+    option: CannonGoalID;
+};
+export type Goals = { [key in CannonFireID]: GoalItem };
 
 // state
 export type State = {

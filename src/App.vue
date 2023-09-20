@@ -10,7 +10,7 @@ onMounted(() => global.loadFromLocalStorage());
 
 <template>
     <div class="bg-slate-900 h-screen w-screen text-white p-4 overflow-y-auto">
-        <div class="container space-y-8 mx-auto py-6">
+        <div class="container mx-auto py-6 relative w-full flex flex-col gap-8">
             <!-- select -->
             <SelectAuthority />
 
@@ -20,8 +20,10 @@ onMounted(() => global.loadFromLocalStorage());
             <!-- cannon -->
             <CannonResults />
 
-            <!-- settings -->
-            <Settings />
+            <div class="grid-grid-cols-2">
+                <!-- settings -->
+                <Settings />
+            </div>
         </div>
     </div>
 </template>

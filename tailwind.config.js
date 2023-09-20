@@ -16,7 +16,7 @@ export default {
                 sans: ["Inter", ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: colors.sky,
+                primary: colors.blue,
             },
         },
     },

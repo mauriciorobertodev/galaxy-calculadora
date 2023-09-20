@@ -169,6 +169,7 @@ export const GALAY_ITEMS: { [key in GalaxyItemID]: GalaxyItem } = {
     FireBall: {
         name: "bala de fogo",
         img: "https://galaxy.mobstudio.ru/services/public/img/prizes/cb_fball_1_200.png",
+        color: "#f97316",
     },
     BlackBall: {
         name: "bala preta",
@@ -177,22 +178,27 @@ export const GALAY_ITEMS: { [key in GalaxyItemID]: GalaxyItem } = {
     GoldBall: {
         name: "bala de ouro",
         img: "https://galaxy.mobstudio.ru/services/public/img/prizes/cb_gball_200.png",
+        color: "#f59e0b",
     },
     ExplosiveBall: {
         name: "bala explosiva",
         img: "https://galaxy.mobstudio.ru/services/public/img/prizes/cb_xball_1_200.png",
+        color: "#dc2626",
     },
     EletricBall: {
         name: "bola elétrica",
         img: "https://galaxy.mobstudio.ru/services/public/img/prizes/b_eball_1_200.png",
+        color: "#a855f7",
     },
     DiamondKey: {
         name: "chave de diamante",
         img: "https://galaxy.mobstudio.ru/services/public/img/prizes/diamond_lockpick_200.png",
+        color: "#3b82f6",
     },
     Barrel: {
         name: "barris",
         img: "https://galaxy.mobstudio.ru/server_pics/cn/b1_.png",
+        color: "#854d0e",
     },
 
     "1Point": {

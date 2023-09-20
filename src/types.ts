@@ -26,6 +26,7 @@ export type GalaxyItemID =
 export type GalaxyItem = {
     name: string;
     img: string;
+    color?: string;
 };
 
 // authorities
@@ -62,7 +63,7 @@ export type CannonGoalOption = {
 };
 
 // inventory
-export type InventoryItemID = "fire-ball" | "gold-ball" | "explosive-ball" | "eletric-ball" | "diamond-key";
+export type InventoryItemID = "gold-ball" | "fire-ball" | "eletric-ball" | "explosive-ball" | "diamond-key";
 
 export type InventoryItem = {
     id: InventoryItemID;

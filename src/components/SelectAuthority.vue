@@ -15,11 +15,13 @@ function handleCurrentAuthorityPoints(e: Event) {
 
     // current_authority.value = points.toString();
     global.setCurrentAuthority({ ...authority, points });
+    global.updateNeededAuthorityPoints();
 }
 
 function handleDesiredAuthority(e: Event) {
     const target = e.target as HTMLSelectElement;
     global.setDesiredAuthority({ ...getAuthorityById(target.value as AuthorityID | "none") });
+    global.updateNeededAuthorityPoints();
 }
 </script>
 

@@ -1,6 +1,6 @@
 import { reactive, watch } from "vue";
-import { Authority, Inventory, InventoryItemID, State, InventoryItem, Trades, TradeItemID, Goals, CannonFireID, CannonGoalID, GoalItem, TradeItem } from "./types";
-import { AUTHORITIES } from "./constants";
+import { Authority, Inventory, InventoryItemID, State, InventoryItem, Trades, TradeItemID, Goals, CannonFireID, CannonGoalID, GoalItem, TradeItem, CannonGoalOption } from "./types";
+import { AUTHORITIES, CANNON_GOALS } from "@/constants";
 
 export class GlobalState {
     private state: State = reactive({
@@ -8,24 +8,24 @@ export class GlobalState {
         current_authority: AUTHORITIES.none,
         needed_authority: 0,
         inventory: {
-            "fire-ball": {
-                id: "fire-ball",
-                gala_item_id: "FireBall",
-                quantity: 0,
-            },
             "gold-ball": {
                 id: "gold-ball",
                 gala_item_id: "GoldBall",
                 quantity: 0,
             },
-            "explosive-ball": {
-                id: "explosive-ball",
-                gala_item_id: "ExplosiveBall",
+            "fire-ball": {
+                id: "fire-ball",
+                gala_item_id: "FireBall",
                 quantity: 0,
             },
             "eletric-ball": {
                 id: "eletric-ball",
                 gala_item_id: "EletricBall",
+                quantity: 0,
+            },
+            "explosive-ball": {
+                id: "explosive-ball",
+                gala_item_id: "ExplosiveBall",
                 quantity: 0,
             },
             "diamond-key": {
@@ -77,6 +77,8 @@ export class GlobalState {
     });
 
     constructor() {
+        this.loadFromLocalStorage();
+        this.updateNeededAuthorityPoints();
         watch(this.state, () => this.saveInLocalStorage());
     }
 
@@ -94,8 +96,13 @@ export class GlobalState {
         return need;
     }
 
-    getNeededAuthorityPoints(): number {
+    getNeededAuthorityPoints() {
         return this.state.needed_authority;
+    }
+
+    updateNeededAuthorityPoints() {
+        const need_points = this.state.desired_authority.points - this.state.current_authority.points;
+        this.state.needed_authority = need_points > 0 ? need_points : 0;
     }
 
     getGoal(id: CannonFireID): GoalItem {
@@ -108,6 +115,10 @@ export class GlobalState {
 
     getTrades(): Trades {
         return this.state.trades;
+    }
+
+    getCannonGoalOption(id: CannonFireID): CannonGoalOption {
+        return CANNON_GOALS[id].find((option) => option.id === this.state.goals[id].option) as CannonGoalOption;
     }
 
     getTradeItem(id: TradeItemID): TradeItem {
